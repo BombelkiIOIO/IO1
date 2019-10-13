@@ -1,0 +1,28 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>750</x><y>560</y><w>220</w><h>150</h></coordinates><panel_attributes>graph
+--
+args:
++ array of files object
+-
++ draw graph on screen
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1180</x><y>380</y><w>220</w><h>160</h></coordinates><panel_attributes>main
+--
+args:
++path to project root passed in 
+command line
+-
++ run file parsing and and prepare
+ data
++run grraph drawin using earlier 
+data</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>380</y><w>280</w><h>130</h></coordinates><panel_attributes>file_parser
+--
+args:
++file_name
+-
+returns:
+list of imports and number of occurrences 
+['file or module name', number of uses]</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>770</x><y>230</y><w>210</w><h>110</h></coordinates><panel_attributes>Class::File
+--
+-id
+-dependencies
+-number_of_uses
+-is_internal</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>970</x><y>230</y><w>230</w><h>260</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;210;240</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>280</y><w>130</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;120;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>960</x><y>500</y><w>240</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;60;220;10</additional_attributes></element></diagram>
