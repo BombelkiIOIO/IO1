@@ -36,5 +36,3 @@ def pars(file_name):
 
         return edit_array(final_result, len(final_result[0]))
 
-
-print(pars('main.py'))
