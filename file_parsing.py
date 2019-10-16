@@ -1,7 +1,5 @@
 import re
-import numpy as np
 import os
-
 
 def pars(file_name):
     line = []
@@ -35,3 +33,4 @@ def pars(file_name):
         return final_result
     else:
         print("File does not exist!")
+        return None
