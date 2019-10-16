@@ -5,7 +5,7 @@ import re
 
 def make_list_all_source_files():
     list_of_files = []
-    root_dir = '.\\'
+    root_dir = '.'
 
     for r, d, f in os.walk(root_dir):
         for file in f:
