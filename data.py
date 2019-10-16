@@ -35,4 +35,6 @@ def prepare_data_to_visualisation():
         print("node: " + str(n.ID) + " name: " + n.name + " size: " + str(n.size) + " bytes"+ "\n" + "internal dependencies:\n" + str(n.internal_dependencies) + "\nexternal dependencies:\n" + str(n.external_dependencies))
         print("\n\n")
 
+    return nodes
+
 prepare_data_to_visualisation()
