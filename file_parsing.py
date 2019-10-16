@@ -1,7 +1,5 @@
 import re
-import numpy as np
 import os
-
 
 def pars(file_name):
     line = []
@@ -32,5 +30,7 @@ def pars(file_name):
                         dictionary[y] = dictionary[y] + 1
         # Convert dictionary to list of tuples
         final_result = [(k, v) for k, v in dictionary.items()]
-
         return final_result
+    else:
+        print("File does not exist!")
+        return None
