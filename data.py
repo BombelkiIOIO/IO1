@@ -3,9 +3,8 @@ import node
 import os
 import re
 
-def make_list_all_source_files():
+def make_list_all_source_files(root_dir):
     list_of_files = []
-    root_dir = '.'
 
     for r, d, f in os.walk(root_dir):
         for file in f:
@@ -14,8 +13,8 @@ def make_list_all_source_files():
 
     return list_of_files
 
-def prepare_data_to_visualisation():
-    files_to_check = make_list_all_source_files()
+def prepare_data_to_visualisation(root_dir):
+    files_to_check = make_list_all_source_files(root_dir)
     nodes = []
 
     for f in files_to_check:
@@ -30,11 +29,4 @@ def prepare_data_to_visualisation():
         newNode = node.Node(f, internal_dependencies, external_dependencies, os.path.getsize(f))
         nodes.append(newNode)
 
-##just to visualize output, to remove in final version
-    for n in nodes:
-        print("node: " + str(n.ID) + " name: " + n.name + " size: " + str(n.size) + " bytes"+ "\n" + "internal dependencies:\n" + str(n.internal_dependencies) + "\nexternal dependencies:\n" + str(n.external_dependencies))
-        print("\n\n")
-
     return nodes
-
-prepare_data_to_visualisation()
