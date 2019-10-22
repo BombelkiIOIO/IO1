@@ -44,7 +44,7 @@ def get_list_of_defined_functions(file_name):
             for x in file:
                 if x.startswith('def'):
                     all_functions.append(re.search("def (.*)[(]", x).group(1))
-        print(all_functions)
+        return all_functions
     else:
         print("File does not exist!")
         return None
@@ -76,9 +76,8 @@ def pars_for_functions(file_name):
                 else:
                     functions.append(x)
 
-            print(functions)
             unique_set = list(set(functions))
-            print(unique_set)
+            return unique_set
 
     else:
         print("File does not exist!")
