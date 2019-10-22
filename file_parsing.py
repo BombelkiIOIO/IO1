@@ -1,11 +1,12 @@
 import re
 import os
 
+
 def pars(file_name):
-    line = []
-    line1 = []
-    names_of_files = []
     if os.path.isfile(file_name):
+        line = []
+        line1 = []
+        names_of_files = []
         # Open file and get dependency
         with open(file_name) as file:
             for x in file:
@@ -31,6 +32,54 @@ def pars(file_name):
         # Convert dictionary to list of tuples
         final_result = [(k, v) for k, v in dictionary.items()]
         return final_result
+    else:
+        print("File does not exist!")
+        return None
+
+
+def get_list_of_defined_functions(file_name):
+    if os.path.isfile(file_name):
+        all_functions = []
+        with open(file_name) as file:
+            for x in file:
+                if x.startswith('def'):
+                    all_functions.append(re.search("def (.*)[(]", x).group(1))
+        print(all_functions)
+    else:
+        print("File does not exist!")
+        return None
+
+
+def pars_for_functions(file_name):
+    if os.path.isfile(file_name):
+        line = []
+        functions = []
+        with open(file_name) as file:
+            for x in file:
+                y = re.search("[.](.*)[(]", x)
+                if y is not None:
+                    line.append(y.group(1))
+
+            for x in line:
+                if re.search("(.*)[(]", x) is not None:
+                    kappa = re.split("[()]", x)
+                    for k in kappa:
+                        if re.search("[.]([a-z]]*)", k) is not None:
+                            functions.append(re.search("[.]([a-z]*)", k).group(1))
+                    functions.append(kappa[0])
+
+                elif re.search("[.](.*)", x) is not None:
+                    splited = re.split("[.]", x)
+                    functions.append(splited[len(splited) - 1])
+                    continue
+
+                else:
+                    functions.append(x)
+
+            print(functions)
+            unique_set = list(set(functions))
+            print(unique_set)
+
     else:
         print("File does not exist!")
         return None
