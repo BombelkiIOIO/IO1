@@ -18,7 +18,8 @@ def print_graph(nodes):
         for a in e.internal_dependencies:
             G.add_edge(node_name, a[0], weight=a[1])
 
-    pos = nx.get_node_attributes(G, 'pos')
+    pos = nx.spring_layout(G)
+    #pos = nx.get_node_attributes(G, 'pos')
     labels = nx.get_edge_attributes(G, 'weight')
 
     nx.draw(G, pos, with_labels=True, font_weight='bold')
