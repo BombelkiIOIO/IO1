@@ -33,13 +33,11 @@ class Application(tk.Frame):
         i = 1
         for n in self.phisycal_nodes:
             node_name = n.name.replace(".py", "")
-            node_name = node_name.replace(".\\", "")
             G.add_node(node_name, pos=(i, (-1)**i))
             i = i+1
 
         for e in self.phisycal_nodes:
             node_name = e.name.replace(".py", "")
-            node_name = node_name.replace(".\\", "")
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
 
@@ -63,13 +61,11 @@ class Application(tk.Frame):
         i = 1
         for n in self.logical_nodes:
             node_name = n.name.replace(".py", "")
-            node_name = node_name.replace(".\\", "")
             G.add_node(node_name, pos=(i, (-1)**i))
             i = i+1
 
         for e in self.logical_nodes:
             node_name = e.name.replace(".py", "")
-            node_name = node_name.replace(".\\", "")
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
 
