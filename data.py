@@ -8,9 +8,9 @@ def make_list_all_source_files(root_dir):
     list_of_files = []
 
     for r, d, f in os.walk(root_dir):
-        for fl in f:
-            if re.search("\.py$", fl):
-                 list_of_files.append(os.path.join(r,fl))
+        for file in f:
+            if re.search("\.py$", file):
+                 list_of_files.append(file)
 
     return list_of_files
 
