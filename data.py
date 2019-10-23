@@ -44,7 +44,7 @@ def prepare_functions_data_to_visualisation(root_dir):
             internal_functions_dependencies = []
             external_functions_dependencies = []
             for a in dependencies:
-                if any(a[0] in n for n in functions_to_check):
+                if any(a[0] == n for n in functions_to_check):
                     internal_functions_dependencies.append(a)
                 else:
                     external_functions_dependencies.append(a)
