@@ -9,7 +9,7 @@ def main(args):
     if args == []:
         args.append(".")
 
-    project = Project(args[0])
+#    prjct = project.Project(args[0])    #prepared for future organisation structure
     nodes = data.prepare_data_to_visualisation(args[0])
     root = tk.Tk()
     app = Application(nodes, master=root)
