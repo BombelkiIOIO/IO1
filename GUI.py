@@ -26,7 +26,7 @@ class Application(tk.Frame):
         if self.canvas:
             self.canvas.get_tk_widget().destroy()
 
-        f = plt.figure(figsize=(5, 4))
+        f = plt.figure(figsize=(10, 10))
         plt.axis('off')
         G = nx.DiGraph()
 
@@ -41,10 +41,10 @@ class Application(tk.Frame):
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
 
-        pos = nx.spring_layout(G)
+        pos = nx.circular_layout(G)
         labels = nx.get_edge_attributes(G, 'weight')
 
-        nx.draw(G, pos, with_labels=True, font_weight='bold')
+        nx.draw(G, pos, with_labels=True, font_weight='normal')
         nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 
         self.canvas = FigureCanvasTkAgg(f, master=self.root)
@@ -69,10 +69,10 @@ class Application(tk.Frame):
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
         
-        pos = nx.spring_layout(G)
+        pos = nx.circular_layout(G)
         labels = nx.get_edge_attributes(G, 'weight')
 
-        nx.draw(G, pos, with_labels=True, font_weight='bold')
+        nx.draw(G, pos, with_labels=True, font_weight='normal', node_color='r')
         nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 
         self.canvas = FigureCanvasTkAgg(f, master=self.root)
