@@ -1,5 +1,5 @@
 import file_parsing
-import node
+import file
 import os
 import re
 
@@ -7,15 +7,15 @@ def make_list_all_source_files(root_dir):
     list_of_files = []
 
     for r, d, f in os.walk(root_dir):
-        for file in f:
-            if re.search("\.py$", file):
-                 list_of_files.append(os.path.join(r,file))
+        for fl in f:
+            if re.search("\.py$", fl):
+                 list_of_files.append(os.path.join(r,fl))
 
     return list_of_files
 
 def prepare_data_to_visualisation(root_dir):
     files_to_check = make_list_all_source_files(root_dir)
-    nodes = []
+    files = []
 
     for f in files_to_check:
         dependencies = file_parsing.pars(f)
@@ -26,7 +26,7 @@ def prepare_data_to_visualisation(root_dir):
                 internal_dependencies.append(a)
             else:
                 external_dependencies.append(a)
-        newNode = node.Node(f, internal_dependencies, external_dependencies, os.path.getsize(f))
-        nodes.append(newNode)
+        new_file = file.File(f, internal_dependencies, external_dependencies, os.path.getsize(f))
+        files.append(new_file)
 
-    return nodes
+    return files
