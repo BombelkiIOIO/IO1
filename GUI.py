@@ -65,7 +65,7 @@ class Application(tk.Frame):
             i = i+1
 
         for e in self.logical_nodes:
-            node_name = n.name
+            node_name = e.name
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
         
@@ -82,7 +82,7 @@ class Application(tk.Frame):
     def ask_quit(self):
         self.root.quit()
 
-    def __init__(self,phisycal_nodes, logical_nodes, master=None):
+    def __init__(self, phisycal_nodes, logical_nodes, master=None):
         tk.Frame.__init__(self, master)
         self.canvas = False
         self.phisycal_nodes = phisycal_nodes

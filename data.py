@@ -9,9 +9,10 @@ def make_list_all_source_files(root_dir):
 
     for r, d, f in os.walk(root_dir):
         if '.git' not in r:
-            for file in f:
-                if re.search("\.py$", file):
-                    list_of_files.append(file)
+            if 'venv' not in r:
+                for file in f:
+                    if re.search("\.py$", file):
+                        list_of_files.append(file)
 
     return list_of_files
 

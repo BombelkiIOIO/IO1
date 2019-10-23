@@ -43,7 +43,9 @@ def get_list_of_defined_functions(file_name):
         all_functions = []
         with open(file_name) as file:
             for x in file:
-                if x.startswith('def'):
+                if re.search("[ *]def", x) is not None:
+                    all_functions.append(re.search("def (.*)[(]", x).group(1))
+                elif x.startswith('def'):
                     all_functions.append(re.search("def (.*)[(]", x).group(1))
         return all_functions
     else:
