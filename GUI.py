@@ -41,7 +41,7 @@ class Application(tk.Frame):
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
 
-        pos = nx.get_node_attributes(G, 'pos')
+        pos = nx.spring_layout(G)
         labels = nx.get_edge_attributes(G, 'weight')
 
         nx.draw(G, pos, with_labels=True, font_weight='bold')
@@ -68,8 +68,8 @@ class Application(tk.Frame):
             node_name = n.name
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
-
-        pos = nx.get_node_attributes(G, 'pos')
+        
+        pos = nx.spring_layout(G)
         labels = nx.get_edge_attributes(G, 'weight')
 
         nx.draw(G, pos, with_labels=True, font_weight='bold')
