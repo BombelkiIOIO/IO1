@@ -10,9 +10,10 @@ def main(args):
         args.append(".")
 
 #    prjct = project.Project(args[0])    #prepared for future organisation structure
-    nodes = data.prepare_data_to_visualisation(args[0])
+    files_nodes = data.prepare_data_to_visualisation(args[0])
+    function_nodes = data.prepare_functions_data_to_visualisation(args[0])
     root = tk.Tk()
-    app = Application(nodes, master=root)
+    app = Application(files_nodes, function_nodes, master=root)
     root.title("Dependency Tracker")
     root.geometry("800x600+300+300")
     

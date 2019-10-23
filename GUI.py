@@ -60,12 +60,12 @@ class Application(tk.Frame):
         G = nx.DiGraph()
         i = 1
         for n in self.logical_nodes:
-            node_name = n.name.replace(".py", "")
+            node_name = n.name
             G.add_node(node_name, pos=(i, (-1)**i))
             i = i+1
 
         for e in self.logical_nodes:
-            node_name = e.name.replace(".py", "")
+            node_name = n.name
             for a in e.internal_dependencies:
                 G.add_edge(node_name, a[0], weight=a[1])
 
@@ -82,11 +82,11 @@ class Application(tk.Frame):
     def ask_quit(self):
         self.root.quit()
 
-    def __init__(self,phisycal_nodes, master=None):
+    def __init__(self,phisycal_nodes, logical_nodes, master=None):
         tk.Frame.__init__(self, master)
         self.canvas = False
         self.phisycal_nodes = phisycal_nodes
-        self.logical_nodes = phisycal_nodes[:-1]
+        self.logical_nodes = logical_nodes
         self.root = master
         self.root.protocol("WM_DELETE_WINDOW", self.ask_quit)
         self.pack()
