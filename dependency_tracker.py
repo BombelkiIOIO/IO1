@@ -1,13 +1,15 @@
 import data
 import sys
 from GUI import Application
-import node
+import file
 import tkinter as tk
+import project
 
 def main(args):
     if args == []:
         args.append(".")
-           
+
+#    prjct = project.Project(args[0])    #prepared for future organisation structure
     nodes = data.prepare_data_to_visualisation(args[0])
     root = tk.Tk()
     app = Application(nodes, master=root)
