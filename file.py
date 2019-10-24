@@ -1,4 +1,4 @@
-class Node:
+class File:
 
     ID = 0
 
@@ -7,5 +7,5 @@ class Node:
         self.internal_dependencies = internal_dependencies
         self.external_dependencies = external_dependencies
         self.size = size
-        self.ID = Node.ID
-        Node.ID += 1
+        self.ID = File.ID
+        File.ID += 1
