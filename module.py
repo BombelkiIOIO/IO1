@@ -1,4 +1,4 @@
-class File:
+class Module:
 
     ID = 0
 
@@ -7,5 +7,5 @@ class File:
         self.internal_dependencies = internal_dependencies
         self.external_dependencies = external_dependencies
         self.size = size
-        self.ID = File.ID
-        File.ID += 1
+        self.ID = Module.ID
+        Module.ID += 1
