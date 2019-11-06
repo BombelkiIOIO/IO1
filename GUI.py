@@ -20,13 +20,17 @@ class Application(tk.Frame):
         self.logical_btn = tk.Button(self)
         self.logical_btn["text"] = "Logical",
         self.logical_btn["command"] = self.draw_logial_graph
+        self.logical_btn.pack({"side": "left"})
+        self.logical_btn = tk.Button(self)
+        self.logical_btn["text"] = "Modules",
+        self.logical_btn["command"] = self.draw_modules_graph
         self.logical_btn.pack({"side": "right"})
 
     def draw_phisycal_graph(self):
         if self.canvas:
             self.canvas.get_tk_widget().destroy()
 
-        f = plt.figure(figsize=(10, 10))
+        f = plt.figure(figsize=(5, 4))
         plt.axis('off')
         G = nx.DiGraph()
 
@@ -58,6 +62,7 @@ class Application(tk.Frame):
         f = plt.figure(figsize=(5, 4))
         plt.axis('off')
         G = nx.DiGraph()
+
         i = 1
         for n in self.logical_nodes:
             node_name = n.name
@@ -77,8 +82,19 @@ class Application(tk.Frame):
 
         self.canvas = FigureCanvasTkAgg(f, master=self.root)
         self.canvas.get_tk_widget().pack(side='bottom', fill='both', expand=1)
-    
-    
+
+    def draw_modules_graph(self):
+        if self.canvas:
+            self.canvas.get_tk_widget().destroy()
+
+        f = plt.figure(figsize=(5, 4))
+        plt.axis('off')
+
+        #place for modules drawing method
+
+        self.canvas = FigureCanvasTkAgg(f, master=self.root)
+        self.canvas.get_tk_widget().pack(side='bottom', fill='both', expand=1)
+
     def ask_quit(self):
         self.root.quit()
 
