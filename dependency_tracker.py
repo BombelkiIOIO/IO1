@@ -1,17 +1,18 @@
-import data
+import data.data
 import sys
-from GUI import Application
-import file
+from GUI.GUI import Application
+import objects.file
 import tkinter as tk
-import project
+import objects.project
+import os
 
 def main(args):
     if args == []:
         args.append(".")
 
-#    prjct = project.Project(args[0])    #prepared for future organisation structure
-    files_nodes = data.prepare_data_to_visualisation(args[0])
-    function_nodes = data.prepare_functions_data_to_visualisation(args[0])
+    prjct = objects.project.Project(os.path.splitext(os.path.basename(sys.argv[0]))[0], args[0])
+"""    files_nodes = data.data.prepare_data_to_visualisation(args[0])
+    function_nodes = data.data.prepare_functions_data_to_visualisation(args[0])
     root = tk.Tk()
     app = Application(files_nodes, function_nodes, master=root)
     root.title("Dependency Tracker")
@@ -19,6 +20,6 @@ def main(args):
     
     app.mainloop()
     root.destroy()
-
+"""
 if __name__ == "__main__":
     main(sys.argv[1:])
