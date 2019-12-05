@@ -1,0 +1,52 @@
+<MyWidget>:
+  cols: 1
+  rows: 3
+  BoxLayout:
+    size_hint_y: None
+    height: 25
+    orientation: "vertical"
+    Button:
+      id: btn
+      text: 'Files'
+      on_parent: dropdown.dismiss()
+      on_release: dropdown.open(self)
+      size_hint_x: None
+      width: 75
+
+      DropDown:
+        id: dropdown
+        on_select: btn.text = '{}'.format(args[1])
+
+        Button:
+          text: 'Export'
+          size_hint_y: None
+          height: 35
+          on_release: dropdown.select('First Item')
+
+        Button:
+          text: 'Quit'
+          size_hint_y: None
+          height: 35
+          on_release: app.stop()
+  GridLayout:
+    size_hint_y: 0.1
+    cols: 3
+    Label:
+      text: "Files"
+    Label:
+      text: "Functions"
+    Label:
+      text: "Modules"
+    CheckBox:
+      id: files_checkbox
+      on_active: root.checkbox_change()
+    CheckBox:
+      id: functions_checkbox
+      on_active: root.checkbox_change()
+    CheckBox:
+      id: modules_checkbox
+      on_active: root.checkbox_change()
+  BoxLayout:
+    id: plot
+    orientation: "vertical"
+
