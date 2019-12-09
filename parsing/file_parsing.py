@@ -30,17 +30,22 @@ class Analyzer(ast.NodeVisitor):
 
 # function returns: all imports
 def get_imports(file_name):
-    t = ast.parse(open(file_name).read())
+    file = open(file_name)
+    t = ast.parse(file.read())
     an = Analyzer()
     an.visit(t)
     all_imports = an.import_from + an.imports
+    file.close()
     return all_imports
+
 
 # function return: all definition in current file
 def get_function_def(file_name):
-    t = ast.parse(open(file_name).read())
+    file = open(file_name)
+    t = ast.parse(file.read())
     an = Analyzer()
     an.visit(t)
+    file.close()
     return an.func_def_names
 
 
@@ -48,7 +53,8 @@ def get_function_def(file_name):
 # if func_name = None, returns all function calls
 # else it returns function calls in given function
 def get_function_calls(file_name, func_name=None):
-    t = ast.parse(open(file_name).read())
+    file = open(file_name)
+    t = ast.parse(file.read())
     an = Analyzer()
     if func_name is not None:
         for node in ast.walk(t):
@@ -60,5 +66,5 @@ def get_function_calls(file_name, func_name=None):
         for node in ast.walk(t):
             if isinstance(node, ast.Call):
                 an.visit(node.func)
-
+    file.close()
     return an.func_calls
