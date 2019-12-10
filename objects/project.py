@@ -23,6 +23,7 @@ def pars_for_modules(root_dir):
                         if 'venv' not in mod:
                             if '__pycache__' not in mod:
                                 if '.idea' not in mod:
-                                    list_of_modules.append(mod)
+                                    if 'inspectionProfiles' not in mod:
+                                        list_of_modules.append(mod)
 
     return list_of_modules
