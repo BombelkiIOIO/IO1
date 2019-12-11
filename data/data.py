@@ -4,7 +4,7 @@ import objects.function
 import os
 import re
 
-def make_list_all_source_files(root_dir):
+"""def make_list_all_source_files(root_dir):
     list_of_files = []
 
     for r, d, f in os.walk(root_dir):
@@ -15,6 +15,7 @@ def make_list_all_source_files(root_dir):
                         list_of_files.append(file)
 
     return list_of_files
+"""
 
 def prepare_data_to_visualisation(root_dir):
     files_to_check = make_list_all_source_files(root_dir)
