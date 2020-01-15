@@ -15,7 +15,7 @@ import re
                         list_of_files.append(file)
 
     return list_of_files
-"""
+
 
 def prepare_data_to_visualisation(root_dir):
     files_to_check = make_list_all_source_files(root_dir)
@@ -54,3 +54,5 @@ def prepare_functions_data_to_visualisation(root_dir):
             functions.append(new_function)
 
     return functions
+    
+"""

@@ -36,8 +36,6 @@ class Application(tk.Frame):
 
         i = 1
         for m in project.modules:
-            print(m)
-
             node_name = m.name.replace(".py", "")
             G.add_node(node_name, pos=(i, (-1)**i))
             i = i+1

@@ -10,7 +10,7 @@ class Project:
         self.modules = []
         self.list_modules = pars_for_modules(root_dir)
         for m in self.list_modules:
-            self.modules.append(objects.module.Module(m))
+            self.modules.append(objects.module.Module(m, self))
 
 def pars_for_modules(root_dir):
     list_of_modules = ['global_scope']

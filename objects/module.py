@@ -5,13 +5,14 @@ class Module:
 
     ID = 0
 
-    def __init__(self, name):
+    def __init__(self, name, project):
         self.name = name
+        self.project_name = project
         self.ID = Module.ID
         self.files = []
         self.list_files = pars_for_files(name)
         for f in self.list_files:
-            self.files.append(objects.file.File(f, self.name))
+            self.files.append(objects.file.File(f, self))
         Module.ID += 1
 
 def pars_for_files(dir):

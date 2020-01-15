@@ -5,10 +5,12 @@ import os
 class File:
     ID = 0
 
-    def __init__(self, name, module_name):
+    def __init__(self, name, module):
         self.name = name
+        module_name = module.name
         if module_name == 'global_scope':
             module_name = '.'
+        self.module = module
         self.size = os.stat(os.path.join(module_name, name)).st_size
         self.ID = File.ID
         if name not in ['diagram.png', 'diagram.uxf']:
