@@ -36,7 +36,6 @@ def get_imports(file_name):
     all_imports = an.import_from + an.imports
     return all_imports
 
-
 # function return: all definition in current file
 def get_function_def(file_name):
     t = ast.parse(open(file_name).read())
