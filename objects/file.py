@@ -13,7 +13,7 @@ class File:
         self.module = module
         self.size = os.stat(os.path.join(module_name, name)).st_size
         self.ID = File.ID
-        if name not in ['diagram.png', 'diagram.uxf']:
+        if ".py" in name:
             self.imports = parsing.file_parsing.get_imports(os.path.join(module_name, name))
             self.functions_def = parsing.file_parsing.get_function_def(os.path.join(module_name, name))
             self.functions_calls = parsing.file_parsing.get_function_calls(os.path.join(module_name, name))

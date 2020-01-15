@@ -23,7 +23,7 @@ def pars_for_files(dir):
         for r, d, f in os.walk("."):
             if i == 0:
                 for fl in f:
-                    if fl == 'dependency_tracker.py':    #temp solution, won't works for other app
+                    if fl == 'Application.py':    #temp solution, won't works for other app
                         list_of_files.append(fl)
             i += 1
     else:
