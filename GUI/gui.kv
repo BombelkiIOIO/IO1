@@ -1,52 +1,76 @@
-<MyWidget>:
-  cols: 1
-  rows: 3
+<RootWidget>:
   BoxLayout:
-    size_hint_y: None
-    height: 25
     orientation: "vertical"
+    pos_hint: {'top':1}
+
     Button:
-      id: btn
-      text: 'Files'
-      on_parent: dropdown.dismiss()
-      on_release: dropdown.open(self)
-      size_hint_x: None
-      width: 75
+      text: 'Open'
+      size_hint_y: 0.1
+      on_press: self.parent.parent.parent.show_load()
 
-      DropDown:
-        id: dropdown
-        on_select: btn.text = '{}'.format(args[1])
+    Button:
+      text: 'Export'
+      size_hint_y: 0.1
 
-        Button:
-          text: 'Export'
-          size_hint_y: None
-          height: 35
-          on_release: dropdown.select('First Item')
+    Button:
+      text: 'Quit'
+      size_hint_y: 0.1
+      on_release: app.stop()
 
-        Button:
-          text: 'Quit'
-          size_hint_y: None
-          height: 35
-          on_release: app.stop()
-  GridLayout:
-    size_hint_y: 0.1
-    cols: 3
-    Label:
-      text: "Files"
-    Label:
-      text: "Functions"
-    Label:
-      text: "Modules"
-    CheckBox:
-      id: files_checkbox
-      on_active: root.checkbox_change()
-    CheckBox:
-      id: functions_checkbox
-      on_active: root.checkbox_change()
-    CheckBox:
-      id: modules_checkbox
-      on_active: root.checkbox_change()
   BoxLayout:
-    id: plot
     orientation: "vertical"
+    id: asd
+    BoxLayout:
+      size_hint_y: 0.1
+      Button:
+        background_normal: ''
+        background_color: 0, 0, 0
+        size_hint_x: 0.1
+        on_press: root.toggle_state()
+        Image:
+          source: "hamburger.png"
+          x: self.parent.x
+          y: self.parent.y
+          width: self.parent.width
+          height: self.parent.height
+      GridLayout:
+        cols: 3
+        Label:
+          text: "Files"
+        Label:
+          text: "Functions"
+        Label:
+          text: "Modules"
+        CheckBox:
+          id: files_checkbox
+          on_active: root.checkbox_change()
+        CheckBox:
+          id: functions_checkbox
+          on_active: root.checkbox_change()
+        CheckBox:
+          id: modules_checkbox
+          on_active: root.checkbox_change()
+    BoxLayout:
+      id: plots
+      orientation: "vertical"
+
+<LoadDialog>:
+  BoxLayout:
+    size: root.size
+    pos: root.pos
+    orientation: "vertical"
+    FileChooserIconView:
+      id: filechooser
+      dirselect: True
+
+    BoxLayout:
+      size_hint_y: None
+      height: 30
+      Button:
+        text: "Cancel"
+        on_press: root.cancel()
+
+      Button:
+        text: "Load"
+        on_press: root.load(filechooser.path, filechooser.selection)
 
