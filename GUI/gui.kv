@@ -43,13 +43,16 @@
           text: "Modules"
         CheckBox:
           id: files_checkbox
-          on_active: root.checkbox_change()
+          on_active: root.files_graph()
+          disabled: True
         CheckBox:
           id: functions_checkbox
-          on_active: root.checkbox_change()
+          on_active: root.functions_graph()
+          disabled: True
         CheckBox:
           id: modules_checkbox
-          on_active: root.checkbox_change()
+          on_active: root.modules_graph()
+          disabled: True
     BoxLayout:
       id: plots
       orientation: "vertical"
