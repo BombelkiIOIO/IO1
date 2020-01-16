@@ -30,41 +30,50 @@ class Analyzer(ast.NodeVisitor):
 
 # function returns: all imports
 def get_imports(file_name):
-    file = open(file_name)
-    t = ast.parse(file.read())
-    an = Analyzer()
-    an.visit(t)
-    all_imports = an.import_from + an.imports
-    file.close()
-    return all_imports
+    try:
+        file = open(file_name)
+        t = ast.parse(file.read())
+        an = Analyzer()
+        an.visit(t)
+        all_imports = an.import_from + an.imports
+        file.close()
+        return all_imports
+    except IOError:
+        print("Error: file does not appear to exist.")
 
 
 # function return: all definition in current file
 def get_function_def(file_name):
-    file = open(file_name)
-    t = ast.parse(file.read())
-    an = Analyzer()
-    an.visit(t)
-    file.close()
-    return an.func_def_names
+    try:
+        file = open(file_name)
+        t = ast.parse(file.read())
+        an = Analyzer()
+        an.visit(t)
+        file.close()
+        return an.func_def_names
+    except IOError:
+        print("Error: file does not appear to exist.")
 
 
 # function returns:
 # if func_name = None, returns all function calls
 # else it returns function calls in given function
 def get_function_calls(file_name, func_name=None):
-    file = open(file_name)
-    t = ast.parse(file.read())
-    an = Analyzer()
-    if func_name is not None:
-        for node in ast.walk(t):
-            if isinstance(node, ast.FunctionDef) and node.name == func_name:
-                for x in ast.walk(node):
-                    if isinstance(x, ast.Call):
-                        an.visit(x.func)
-    else:
-        for node in ast.walk(t):
-            if isinstance(node, ast.Call):
-                an.visit(node.func)
-    file.close()
-    return an.func_calls
+    try:
+        file = open(file_name)
+        t = ast.parse(file.read())
+        an = Analyzer()
+        if func_name is not None:
+            for node in ast.walk(t):
+                if isinstance(node, ast.FunctionDef) and node.name == func_name:
+                    for x in ast.walk(node):
+                        if isinstance(x, ast.Call):
+                            an.visit(x.func)
+        else:
+            for node in ast.walk(t):
+                if isinstance(node, ast.Call):
+                    an.visit(node.func)
+        file.close()
+        return an.func_calls
+    except IOError:
+        print("Error: file does not appear to exist.")

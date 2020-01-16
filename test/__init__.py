@@ -1,3 +1,3 @@
 _all_ = [
-        'test_main.py'
+        'unitests.py'
         ]
