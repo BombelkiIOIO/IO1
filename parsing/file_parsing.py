@@ -14,8 +14,10 @@ class Analyzer(ast.NodeVisitor):
         self.generic_visit(node)
 
     def visit_ImportFrom(self, node):
+        module = node.module
         for alias in node.names:
-            self.import_from.append(alias.name)
+            name = alias.name
+        self.import_from.append(module + "." + name)
         self.generic_visit(node)
 
     def visit_FunctionDef(self, node):
