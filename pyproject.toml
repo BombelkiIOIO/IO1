@@ -12,6 +12,7 @@ kivy = "^1.11"
 "kivy-deps.sdl2" = "0.1.22"
 "kivy-deps.glew" = "0.1.12"
 requests = "^2.22"
+kivy-garden = "^0.1.4"
 
 [tool.poetry.dev-dependencies]
 
