@@ -22,3 +22,9 @@ class Project:
                     for file in files:
                         if file.endswith(".py"):
                             self.modules[0].add_file(os.path.join(root, file))
+
+    def get_functions(self):
+        return [fun for module in self.modules for file in module.files for fun in file.functions]
+
+    def get_files(self):
+        return [file for module in self.modules for file in module.files]
