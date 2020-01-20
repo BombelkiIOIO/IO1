@@ -64,7 +64,7 @@ class RootWidget(NavigationDrawer):
         self.proj = project.Project("elo", dir_root_path[0])
         self.fig_modules = graphs.draw_modules_graph(self.proj)
         self.fig_files = graphs.draw_files_graph(self.proj)
-        self.fig_function = graphs.draw_function_graph(self.proj)
+        self.fig_function = graphs.draw_modules_graph(self.proj)
         self.ids.files_checkbox.disabled = False
         self.ids.modules_checkbox.disabled = False
         self.ids.functions_checkbox.disabled = False
