@@ -1,13 +1,13 @@
 from kivy.app import App
 from kivy.lang import Builder
 
-from GUI.root_widget import RootWidget
+from GUI import root_widget
 
 
 class Application(App):
     def build(self):
         self.title = "Dependency Tracker"
-        return RootWidget()
+        return root_widget.RootWidget()
 
 
 if __name__ == "__main__":
